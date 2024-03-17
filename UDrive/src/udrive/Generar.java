@@ -14,7 +14,17 @@ public class Generar extends javax.swing.JFrame {
      * Creates new form Generar
      */
     public Generar() {
+
+        
+        
+        
         initComponents();
+        jComboBox1.removeAllItems();
+        for (int i=0;i<9;i++){
+            if(UDrive.disponible[i]){
+                jComboBox1.addItem(UDrive.vehiculo[i]);
+            }
+        }
     }
 
     /**
