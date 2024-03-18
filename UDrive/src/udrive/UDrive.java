@@ -13,14 +13,14 @@ public class UDrive {
      * @param args the command line arguments
      */
     public static int ID=0;
-    public static ArrayList<Integer> ruta=new ArrayList<Integer>();//aquí guardarpe las posiciones de los vehículos
-    
+    public static int ruta[]=new int[3];//aquí guardarpe las posiciones de los vehículos
+    public static boolean libre[]={true,true,true};
     public static void main(String[] args) {
-        //Inicio inicio= new Inicio();
-        //inicio.setLocationRelativeTo(null);
-        //inicio.setResizable(false);
-        //inicio.setVisible(true);
-        Viajes viaje=new Viajes();
+        Inicio inicio= new Inicio();
+        inicio.setLocationRelativeTo(null);
+        inicio.setResizable(false);
+        inicio.setVisible(true);
+        //Viajes viaje=new Viajes();
     }
     
     public static boolean disponible[]={true,true,true,true,true,true,true,true,true};
