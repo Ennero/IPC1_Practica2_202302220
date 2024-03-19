@@ -20,7 +20,9 @@ public class Generar extends javax.swing.JFrame {
         
         initComponents();
         jComboBox1.removeAllItems();
-        for (int i=0;i<9;i++){
+        jComboBox2.removeAllItems();
+        jComboBox3.removeAllItems();
+        for (int i=0;i<9;i++){//Solo coloco los vehículo que están diponibles
             if(UDrive.disponible[i]){
                 jComboBox1.addItem(UDrive.vehiculo[i]);
             }
@@ -32,6 +34,20 @@ public class Generar extends javax.swing.JFrame {
             jLabel2.setForeground(Color.red);
             jButton1.setForeground(Color.red);
         }
+        for(int i=0;i<Menu.d.getColumnCount()+1;i++){
+            for(int j=1;j<3;j++){
+                jComboBox2.addItem(String.valueOf(Menu.d.getValueAt(i, j)));
+            }
+        }
+        for(int i=0;i<Menu.d.getColumnCount()+1;i++){
+            for(int j=1;j<3;j++){
+                jComboBox3.addItem(String.valueOf(Menu.d.getValueAt(i, j)));
+            }
+        }
+
+        
+        
+        
     }
 
     /**

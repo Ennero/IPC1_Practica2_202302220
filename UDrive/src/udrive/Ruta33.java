@@ -5,25 +5,23 @@ package udrive;
  *
  * @author Enner
  */
-public class Ruta3 extends Thread{
-    
+public class Ruta33 extends Thread{
     Viajes viaje;
     private boolean b1=true;
     private double distancia;
-    public Ruta3(Viajes viaje) {
+    public Ruta33(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po3-120)/(Viajes.d3-Viajes.rec3));
+        distancia=((Viajes.po3+585)/(Viajes.d3-Viajes.rec3));
     }
     @Override
     public void run(){
         try{
             while(b1){
                 sleep(1000);
-                if(Viajes.po3<=120){
+                if(Viajes.po3>=720){
                     pausar();
-                    Viajes.btn32.setEnabled(true);
                 }else{
-                    Viajes.po3=(int)(Viajes.po3-distancia);
+                    Viajes.po3=(int)(Viajes.po3+distancia);
                     Viajes.rec3+=1;
                     Viajes.disto3+=1;
                     Viajes.gas3=Viajes.gas3-viaje.c;
@@ -46,6 +44,4 @@ public class Ruta3 extends Thread{
         public void pausar(){
         b1=false;
     }
-    
-    
 }

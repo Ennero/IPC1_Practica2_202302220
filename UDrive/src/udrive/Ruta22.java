@@ -5,25 +5,24 @@ package udrive;
  *
  * @author Enner
  */
-public class Ruta2 extends Thread{
+public class Ruta22 extends Thread{
     Viajes viaje;
     private boolean b1=true;
     private double distancia;
     
-    public Ruta2(Viajes viaje) {
+    public Ruta22(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po2-120)/(Viajes.d2-Viajes.rec2));
+        distancia=((Viajes.po2+585)/(Viajes.d2-Viajes.rec2));
     }
     @Override
     public void run(){
         try{
             while(b1){
                 sleep(1000);
-                if(Viajes.po2<=120){
+                if(Viajes.po2>=720){
                     pausar();
-                    Viajes.btn22.setEnabled(true);
                 }else{
-                    Viajes.po2=(int)(Viajes.po2-distancia);
+                    Viajes.po2=(int)(Viajes.po2+distancia);
                     Viajes.rec2+=1;
                     Viajes.disto2+=1;
                     Viajes.gas2=Viajes.gas2-viaje.b;

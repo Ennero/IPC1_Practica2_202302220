@@ -16,7 +16,7 @@ public class Viajes extends JFrame implements ActionListener {
 
     public static JLabel lbl11, lbl12, lbl13, lbl14, lbl15, lbl16, lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl31, lbl32, lbl33, lbl34, lbl35, lbl36,
             LabelImagen1, LabelImagen2, LabelImagen3, D1, D2, D3, I1, I2, I3;
-    public static double d1, d2, d3, r1, r2, r3, g1, g2, g3,a,b,c,rec1,rec2,rec3,disto1,disto2,disto3;
+    public static double d1, d2, d3, r1, r2, r3, g1, g2, g3,a,b,c,rec1,rec2,rec3,disto1,disto2,disto3,gas1,gas2,gas3;
     public static int po1=830;
     public static int po2=830;
     public static int po3=830;
@@ -125,9 +125,12 @@ public class Viajes extends JFrame implements ActionListener {
         this.add(btn32);
 
         
-        UDrive.ruta[0]=3;
+        UDrive.ruta[0]=8;
         UDrive.ruta[2]=2;
-        d1=20;
+        UDrive.ruta[1]=5;
+        d1=6;
+        d2=5;
+        d3=10;
 
         int y = 0;
         //********************************************************************************************************************************************************
@@ -564,36 +567,109 @@ public class Viajes extends JFrame implements ActionListener {
             
         }
         if(e.getSource()==btn03){
-            
+            gas1=g1;
+            gas2=g2;
+            gas3=g3;
+            Ruta1 t1=new Ruta1 (this);
+            t1.start();
+            Ruta2 t2= new Ruta2(this);
+            t2.start();
+            Ruta3 t3=new Ruta3(this);
+            t3.start();
+            btn21.setEnabled(false);
+            b2=true;
+            btn31.setEnabled(false);
+            b3=true;
+            btn11.setEnabled(false);
+            b1=true;
         }
-        if(e.getSource()==btn11){
+        if(e.getSource()==btn11){//Bortón de incio
+            gas1=g1;
             Ruta1 tu=new Ruta1(this);
             tu.start();
             btn11.setEnabled(false);
             b1=true;
         }
-        if(e.getSource()==btn12){
+        if(e.getSource()==btn12){//Botón de regreso
+            Viajes.rec1=0;
+            
             Ruta11 ru=new Ruta11(this);
             ru.start();
-            disto1=rec1;
-            rec1=0;
             btn12.setEnabled(false);
+            v1=true;
+        }
+        if(e.getSource()==btn13){//Este es el botón de recarga
+            if(b1){
+                gas1=g1;
+                Ruta1 ru=new Ruta1(this);
+                ru.start();
+                btn13.setVisible(false);
+            }else{
+                gas1=g1;
+                Ruta1 ru=new Ruta1(this);
+                ru.start();
+                btn13.setVisible(false);
+            }
+            
             
         }
-        if(e.getSource()==btn13){
-            po1=120;
-            LabelImagen1.setBounds(po1,75,125,160);
-            Ruta1 ru=new Ruta1(this);
-            ru.start();
-            btn13.setVisible(false);
+        if(e.getSource()==btn21){//este es el botón de inicio
+            gas2=g2;
+            Ruta2 tu=new Ruta2(this);
+            tu.start();
+            btn21.setEnabled(false);
             b2=true;
             
         }
-        if(e.getSource()==btn21){
+        if(e.getSource()==btn22){//Este es el botón de recarga
+            Viajes.rec2=0;
+            
+            Ruta22 ru=new Ruta22(this);
+            ru.start();
+            btn22.setEnabled(false);
+            v2=true;
+        }
+        if(e.getSource()==btn23){//Este es el botón de recarga
+            if(b2){
+                gas2=g2;
+                Ruta2 ru=new Ruta2(this);
+                ru.start();
+                btn23.setVisible(false);
+            }else{
+                gas2=g2;
+                Ruta2 ru=new Ruta2(this);
+                ru.start();
+                btn23.setVisible(false);
+            }
+        }
+        if(e.getSource()==btn31){//este es el botón de inicio
+            gas3=g3;
+            Ruta3 tu=new Ruta3(this);
+            tu.start();
+            btn31.setEnabled(false);
+            b3=true;
             
         }
-        if(e.getSource()==btn31){
+        if(e.getSource()==btn32){//Este es el botón de recarga
+            Viajes.rec3=0;
             
+            Ruta33 ru=new Ruta33(this);
+            ru.start();
+            btn33.setEnabled(false);
+            v3=true;
+        }
+        if(e.getSource()==btn33){//Este es el botón de recarga
+            if(b3){
+                gas3=g3;
+                Ruta3 ru=new Ruta3(this);
+                ru.start();
+                btn33.setVisible(false);
+            }else{
+                gas3=g3;
+                Ruta3 ru=new Ruta3(this);
+                ru.start();
+                btn33.setVisible(false);
+            }
         }
         
         

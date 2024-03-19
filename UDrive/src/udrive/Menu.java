@@ -8,13 +8,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Enner
  */
 public class Menu extends javax.swing.JFrame {
-    DefaultTableModel d=new DefaultTableModel();
-
+    public static DefaultTableModel d=new DefaultTableModel();
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        jButton3.setEnabled(false);
         String[] titulos=new String []{"Id:","Inicio","Fin","Distancia (km)"};
         d.setColumnIdentifiers(titulos);
         jTable1.setModel(d);
@@ -133,6 +133,8 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        UDrive.leerCSV(this);
+        jButton3.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
