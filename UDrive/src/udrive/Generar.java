@@ -13,10 +13,10 @@ public class Generar extends javax.swing.JFrame {
     /**
      * Creates new form Generar
      */
-    static int l1,l2,l3;
-    static int a=-1;
-    static int b=-1;
-    static int c=-1;
+    public static int l1,l2,l3;
+    public static int a=-1;
+    public static int b=-1;
+    public static int c=-1;
     public Generar() {
 
         initComponents();
@@ -197,7 +197,7 @@ public class Generar extends javax.swing.JFrame {
         if (UDrive.libre[0]) {//Aquí solo ando colocando los datos seleccionados en su respectiva ruta
             l1=jComboBox1.getSelectedIndex();
             UDrive.libre[0] = false;
-            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
+
             String destino = (String) jComboBox3.getSelectedItem();
             Viajes.D1 = destino;
             String inicio = (String) jComboBox2.getSelectedItem();
@@ -211,11 +211,12 @@ public class Generar extends javax.swing.JFrame {
             }
             UDrive.ruta[0] = l1;
             a=l1;
+            UDrive.disponible[l1] = false;
             Viajes.b1=false;
         } else if (UDrive.libre[1]) {
             l2=jComboBox1.getSelectedIndex();
             UDrive.libre[1] = false;
-            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
+
             String destino = (String) jComboBox3.getSelectedItem();
             Viajes.D2 = destino;
             String inicio = (String) jComboBox2.getSelectedItem();
@@ -228,12 +229,12 @@ public class Generar extends javax.swing.JFrame {
                 l2++;
             }
             UDrive.ruta[1] = l2;
+            UDrive.disponible[l2] = false;
             b=l2;
             Viajes.b2=false;
         } else {
             l3=jComboBox1.getSelectedIndex();
             UDrive.libre[2] = false;
-            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
             String destino = (String) jComboBox3.getSelectedItem();
             Viajes.D3 = destino;
             String inicio = (String) jComboBox2.getSelectedItem();
@@ -246,6 +247,7 @@ public class Generar extends javax.swing.JFrame {
                 l3++;
             }
             UDrive.ruta[2] = l3;
+            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
             c=l3;
             Viajes.b3=false;
         }

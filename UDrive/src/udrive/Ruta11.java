@@ -1,6 +1,8 @@
 
 package udrive;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Enner
@@ -11,20 +13,28 @@ public class Ruta11 extends Thread{
     private double distancia;
     public Ruta11(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po1+585)/(Viajes.d1-Viajes.rec1));
+        distancia=((Viajes.po1+590)/(Viajes.d1-Viajes.rec1));
     }
     @Override
     public void run(){
         try{
             while(b1){
                 sleep(1000);
-                if(Viajes.po1>=720){
+                if(Viajes.po1>=810){
+                    Viajes.disto1=Viajes.d1*2;
                     pausar();
+                    LocalDateTime now=LocalDateTime.now();
+                    String tf1=now.format(Viajes.formato);
+                    String nombre=(String) Viajes.lbl11.getText();
+                    UDrive.historial.add(new Linea(tf1,Viajes.ti1,String.valueOf(Viajes.disto1),nombre,String.valueOf((Viajes.gast1))));
+                    UDrive.serializar();
                 }else{
                     Viajes.po1=(int)(Viajes.po1+distancia);
-                    Viajes.rec1+=1;
+                    Viajes.rec1=+1;
                     Viajes.disto1+=1;
                     Viajes.gas1=Viajes.gas1-viaje.a;
+                    Viajes.gast1+=Viajes.a;
+                    
                 }
                 if(Viajes.gas1<=0){
                         pausar();

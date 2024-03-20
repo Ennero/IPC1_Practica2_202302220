@@ -1,6 +1,8 @@
 
 package udrive;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Enner
@@ -18,13 +20,20 @@ public class Ruta33 extends Thread{
         try{
             while(b1){
                 sleep(1000);
-                if(Viajes.po3>=820){
+                if(Viajes.po3>=810){
+                    Viajes.disto3=Viajes.d3*2;
                     pausar();
+                    LocalDateTime now=LocalDateTime.now();
+                    String tf3=now.format(Viajes.formato);
+                    String nombre=(String) Viajes.lbl31.getText();
+                    UDrive.historial.add(new Linea(tf3,Viajes.ti3,String.valueOf(Viajes.disto3),nombre,String.valueOf((Viajes.gast3))));
+                    UDrive.serializar();
                 }else{
                     Viajes.po3=(int)(Viajes.po3+distancia);
                     Viajes.rec3+=1;
                     Viajes.disto3+=1;
                     Viajes.gas3=Viajes.gas3-viaje.c;
+                    Viajes.gast3+=viaje.c;
                 }
                 if(Viajes.gas3<=0){
                         pausar();

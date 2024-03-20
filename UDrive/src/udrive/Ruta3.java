@@ -21,12 +21,14 @@ public class Ruta3 extends Thread{
                 sleep(1000);
                 if(Viajes.po3<=120){
                     pausar();
+                    Viajes.disto3=Viajes.d3;
                     Viajes.btn32.setEnabled(true);
                 }else{
                     Viajes.po3=(int)(Viajes.po3-distancia);
                     Viajes.rec3+=1;
                     Viajes.disto3+=1;
                     Viajes.gas3=Viajes.gas3-viaje.c;
+                    Viajes.gast3+=Viajes.c;
                 }
                 if(Viajes.gas3<=0){
                         pausar();
