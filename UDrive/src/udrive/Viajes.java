@@ -15,17 +15,22 @@ import javax.swing.*;
 public class Viajes extends JFrame implements ActionListener {
 
     public static JLabel lbl11, lbl12, lbl13, lbl14, lbl15, lbl16, lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl31, lbl32, lbl33, lbl34, lbl35, lbl36,
-            LabelImagen1, LabelImagen2, LabelImagen3, D1, D2, D3, I1, I2, I3;
+            LabelImagen1, LabelImagen2, LabelImagen3;
+    public static String  D1, D2, D3, I1, I2, I3;
     public static double d1, d2, d3, r1, r2, r3, g1, g2, g3,a,b,c,rec1,rec2,rec3,disto1,disto2,disto3,gas1,gas2,gas3;
     public static int po1=830;
     public static int po2=830;
     public static int po3=830;
     public static JButton btn01, btn02, btn03, btn11, btn12, btn13, btn21, btn22, btn23, btn31, btn32, btn33;
-    public static boolean b1,b2,b3,v1,v2,v3;
+    public static boolean v1,v2,v3;
+    public static boolean b1=true;
+    public static boolean b2=true;
+    public static boolean b3=true;
     
     
     public Viajes() throws HeadlessException {
-
+        //Aquí solo inicializo los distintos labels para no tener problemas
+        
         //coloco los dos botones de arriba
         btn01 = new JButton("Cerrar");
         btn01.setBounds(5, 5, 100, 30);
@@ -41,6 +46,9 @@ public class Viajes extends JFrame implements ActionListener {
         btn03.setBounds(920, 5, 160, 30);
         btn03.addActionListener(this);
         this.add(btn03);
+        
+        //Hago que los botones no estén disponibles a nada más empezar
+
 
         //**************************************************************************************************************************************
         //generación de las rutas (las lineas)
@@ -123,25 +131,19 @@ public class Viajes extends JFrame implements ActionListener {
         btn32.setForeground(Color.blue);
         btn32.setEnabled(false);
         this.add(btn32);
-
+        //Aquí termino la cosa de los botones
+//***********************************************************************************************************************************************
         
-        UDrive.ruta[0]=8;
-        UDrive.ruta[2]=2;
-        UDrive.ruta[1]=5;
-        d1=6;
-        d2=5;
-        d3=10;
+  
 
-        int y = 0;
+        int y = 0;//Esto es para posicionar todo donde quiero que esté
         //********************************************************************************************************************************************************
         //Generación de las posiciones de los viajes
         for (int i = 0; i < UDrive.ruta.length; i++) {
             if (i == 0) {
                 if (UDrive.ruta[i] < 3) {//La generación de los autos con sus respectivas posiciones
                     g1 = 6;
-                    a=0.1;
-
-                    
+                    a=0.1;                    
                     ImageIcon imagenIcono1 = new ImageIcon(getClass().getResource("./v/moto.png"));
                     Image imageDimension1 = imagenIcono1.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                     ImageIcon imagenadjustada1 = new ImageIcon(imageDimension1);
@@ -547,6 +549,8 @@ public class Viajes extends JFrame implements ActionListener {
         //Fin de la generación de los viajes
         
         
+        
+        //*****************************************************************************************************************************************
         this.setTitle("Viajes");  // Título de la ventana
         this.setLocationRelativeTo(null);
         this.setSize(1100, 600);
@@ -592,16 +596,15 @@ public class Viajes extends JFrame implements ActionListener {
         }
         if(e.getSource()==btn12){//Botón de regreso
             Viajes.rec1=0;
-            
             Ruta11 ru=new Ruta11(this);
             ru.start();
             btn12.setEnabled(false);
             v1=true;
         }
         if(e.getSource()==btn13){//Este es el botón de recarga
-            if(b1){
+            if(v1){
                 gas1=g1;
-                Ruta1 ru=new Ruta1(this);
+                Ruta11 ru=new Ruta11(this);
                 ru.start();
                 btn13.setVisible(false);
             }else{
@@ -621,18 +624,17 @@ public class Viajes extends JFrame implements ActionListener {
             b2=true;
             
         }
-        if(e.getSource()==btn22){//Este es el botón de recarga
+        if(e.getSource()==btn22){//Este es el botón de regreso
             Viajes.rec2=0;
-            
             Ruta22 ru=new Ruta22(this);
             ru.start();
             btn22.setEnabled(false);
             v2=true;
         }
         if(e.getSource()==btn23){//Este es el botón de recarga
-            if(b2){
+            if(v2){
                 gas2=g2;
-                Ruta2 ru=new Ruta2(this);
+                Ruta22 ru=new Ruta22(this);
                 ru.start();
                 btn23.setVisible(false);
             }else{
@@ -650,18 +652,17 @@ public class Viajes extends JFrame implements ActionListener {
             b3=true;
             
         }
-        if(e.getSource()==btn32){//Este es el botón de recarga
+        if(e.getSource()==btn32){//Este es el botón de regreso
             Viajes.rec3=0;
-            
             Ruta33 ru=new Ruta33(this);
             ru.start();
-            btn33.setEnabled(false);
+            btn32.setEnabled(false);
             v3=true;
         }
         if(e.getSource()==btn33){//Este es el botón de recarga
-            if(b3){
+            if(v3){
                 gas3=g3;
-                Ruta3 ru=new Ruta3(this);
+                Ruta33 ru=new Ruta33(this);
                 ru.start();
                 btn33.setVisible(false);
             }else{

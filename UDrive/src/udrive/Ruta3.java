@@ -28,7 +28,7 @@ public class Ruta3 extends Thread{
                     Viajes.disto3+=1;
                     Viajes.gas3=Viajes.gas3-viaje.c;
                 }
-                if(Viajes.gas1<=0){
+                if(Viajes.gas3<=0){
                         pausar();
                         this.viaje.btn33.setVisible(true);
                     }

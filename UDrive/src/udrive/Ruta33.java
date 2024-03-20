@@ -11,14 +11,14 @@ public class Ruta33 extends Thread{
     private double distancia;
     public Ruta33(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po3+585)/(Viajes.d3-Viajes.rec3));
+        distancia=((Viajes.po3+590)/(Viajes.d3-Viajes.rec3));
     }
     @Override
     public void run(){
         try{
             while(b1){
                 sleep(1000);
-                if(Viajes.po3>=720){
+                if(Viajes.po3>=820){
                     pausar();
                 }else{
                     Viajes.po3=(int)(Viajes.po3+distancia);
@@ -26,7 +26,7 @@ public class Ruta33 extends Thread{
                     Viajes.disto3+=1;
                     Viajes.gas3=Viajes.gas3-viaje.c;
                 }
-                if(Viajes.gas1<=0){
+                if(Viajes.gas3<=0){
                         pausar();
                         this.viaje.btn33.setVisible(true);
                     }

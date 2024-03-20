@@ -12,14 +12,14 @@ public class Ruta22 extends Thread{
     
     public Ruta22(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po2+585)/(Viajes.d2-Viajes.rec2));
+        distancia=((Viajes.po2+590)/(Viajes.d2-Viajes.rec2));
     }
     @Override
     public void run(){
         try{
             while(b1){
                 sleep(1000);
-                if(Viajes.po2>=720){
+                if(Viajes.po2>=810){
                     pausar();
                 }else{
                     Viajes.po2=(int)(Viajes.po2+distancia);

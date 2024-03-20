@@ -1,8 +1,8 @@
-
 package udrive;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,41 +13,40 @@ public class Generar extends javax.swing.JFrame {
     /**
      * Creates new form Generar
      */
+    static int l1,l2,l3;
+    static int a=-1;
+    static int b=-1;
+    static int c=-1;
     public Generar() {
 
-        
-        
-        
         initComponents();
         jComboBox1.removeAllItems();
         jComboBox2.removeAllItems();
         jComboBox3.removeAllItems();
-        for (int i=0;i<9;i++){//Solo coloco los vehículo que están diponibles
-            if(UDrive.disponible[i]){
+        for (int i = 0; i < 9; i++) {//Solo coloco los vehículo que están diponibles
+            if (UDrive.disponible[i]) {
                 jComboBox1.addItem(UDrive.vehiculo[i]);
             }
         }
-        if(!(UDrive.libre[0] || UDrive.libre[1] || UDrive.libre[2])){
+        if (!(UDrive.libre[0] || UDrive.libre[1] || UDrive.libre[2])) {
             jLabel2.setText("SIN CONDUCTORES");
             jButton1.setEnabled(false);
             jButton1.setText("DISPONIBLES");
             jLabel2.setForeground(Color.red);
             jButton1.setForeground(Color.red);
         }
-        for(int i=0;i<Menu.d.getColumnCount()+1;i++){
-            for(int j=1;j<3;j++){
+        for (int i = 0; i < Menu.d.getColumnCount() + 1; i++) {
+            for (int j = 1; j < 3; j++) {
                 jComboBox2.addItem(String.valueOf(Menu.d.getValueAt(i, j)));
             }
         }
-        for(int i=0;i<Menu.d.getColumnCount()+1;i++){
-            for(int j=1;j<3;j++){
+        for (int i = 0; i < Menu.d.getColumnCount() + 1; i++) {
+            for (int j = 1; j < 3; j++) {
                 jComboBox3.addItem(String.valueOf(Menu.d.getValueAt(i, j)));
             }
         }
+        
 
-        
-        
-        
     }
 
     /**
@@ -195,12 +194,70 @@ public class Generar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (UDrive.libre[0]) {//Aquí solo ando colocando los datos seleccionados en su respectiva ruta
+            l1=jComboBox1.getSelectedIndex();
+            UDrive.libre[0] = false;
+            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
+            String destino = (String) jComboBox3.getSelectedItem();
+            Viajes.D1 = destino;
+            String inicio = (String) jComboBox2.getSelectedItem();
+            Viajes.I1 = inicio;
+            Viajes.d1 = Double.parseDouble((String) Menu.d.getValueAt(jComboBox2.getSelectedIndex() / 2, 3));
+            if(jComboBox1.getSelectedIndex()>=b && b!=-1){
+                l1++;
+            }
+            if(jComboBox1.getSelectedIndex()>=c && c!=-1){
+                l1++;
+            }
+            UDrive.ruta[0] = l1;
+            a=l1;
+            Viajes.b1=false;
+        } else if (UDrive.libre[1]) {
+            l2=jComboBox1.getSelectedIndex();
+            UDrive.libre[1] = false;
+            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
+            String destino = (String) jComboBox3.getSelectedItem();
+            Viajes.D2 = destino;
+            String inicio = (String) jComboBox2.getSelectedItem();
+            Viajes.I2 = inicio;
+            Viajes.d2 = Double.parseDouble((String) Menu.d.getValueAt(jComboBox2.getSelectedIndex() / 2, 3));
+            if(jComboBox1.getSelectedIndex()>=a && a!=-1){
+                l2++;
+            }
+            if(jComboBox1.getSelectedIndex()>=c && c!=-1){
+                l2++;
+            }
+            UDrive.ruta[1] = l2;
+            b=l2;
+            Viajes.b2=false;
+        } else {
+            l3=jComboBox1.getSelectedIndex();
+            UDrive.libre[2] = false;
+            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
+            String destino = (String) jComboBox3.getSelectedItem();
+            Viajes.D3 = destino;
+            String inicio = (String) jComboBox2.getSelectedItem();
+            Viajes.I3 = inicio;
+            Viajes.d3 = Double.parseDouble((String) Menu.d.getValueAt(jComboBox2.getSelectedIndex() / 2, 3));
+            if(jComboBox1.getSelectedIndex()>=b && b!=-1){
+                l3++;
+            }
+            if(jComboBox1.getSelectedIndex()>=a && a!=-1){
+                l3++;
+            }
+            UDrive.ruta[2] = l3;
+            c=l3;
+            Viajes.b3=false;
+        }
+        JOptionPane.showMessageDialog(null, "Viaje generado exitosamente", "Viaje generado", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Menu menu= new Menu();
+        Menu menu = new Menu();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

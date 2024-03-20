@@ -19,7 +19,7 @@ public class UDrive {
      * @param args the command line arguments
      */
     public static int ID=0;
-    public static int ruta[]=new int[3];//aquí guardarpe las posiciones de los vehículos
+    public static int ruta[]=new int[3];//aquí guardar las posiciones de los vehículos
     public static boolean libre[]={true,true,true};
     public static ArrayList<String[]> historial=new ArrayList<>();
     
