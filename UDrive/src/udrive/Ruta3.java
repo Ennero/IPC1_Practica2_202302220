@@ -9,10 +9,8 @@ public class Ruta3 extends Thread{
     
     Viajes viaje;
     private boolean b1=true;
-    private double distancia;
     public Ruta3(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po3-120)/(Viajes.d3-Viajes.rec3));
     }
     @Override
     public void run(){
@@ -23,16 +21,18 @@ public class Ruta3 extends Thread{
                     pausar();
                     Viajes.disto3=Viajes.d3;
                     Viajes.btn32.setEnabled(true);
+                    Viajes.br3=true;
                 }else{
-                    Viajes.po3=(int)(Viajes.po3-distancia);
+                    Viajes.po3=(int)(Viajes.po3-Viajes.trozo3);
                     Viajes.rec3+=1;
                     Viajes.disto3+=1;
                     Viajes.gas3=Viajes.gas3-viaje.c;
                     Viajes.gast3+=Viajes.c;
                 }
-                if(Viajes.gas3<=0){
+                if(Viajes.gas3<=0 && Viajes.gas3!=-1){
                         pausar();
                         this.viaje.btn33.setVisible(true);
+                        Viajes.reca3=true;
                     }
                 Viajes.LabelImagen3.setLocation((int) Viajes.po3, this.viaje.LabelImagen3.getY());
                 Viajes.lbl36.setLocation((int) Viajes.po3, this.viaje.lbl36.getY());

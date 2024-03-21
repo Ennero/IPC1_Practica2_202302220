@@ -10,10 +10,8 @@ import java.time.LocalDateTime;
 public class Ruta11 extends Thread{
     Viajes viaje;
     private boolean b1=true;
-    private double distancia;
     public Ruta11(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po1+590)/(Viajes.d1-Viajes.rec1));
     }
     @Override
     public void run(){
@@ -22,23 +20,31 @@ public class Ruta11 extends Thread{
                 sleep(1000);
                 if(Viajes.po1>=810){
                     Viajes.disto1=Viajes.d1*2;
+                    Viajes.gast1=Viajes.disto1*Viajes.a;
                     pausar();
                     LocalDateTime now=LocalDateTime.now();
                     String tf1=now.format(Viajes.formato);
                     String nombre=(String) Viajes.lbl11.getText();
                     UDrive.historial.add(new Linea(tf1,Viajes.ti1,String.valueOf(Viajes.disto1),nombre,String.valueOf((Viajes.gast1))));
                     UDrive.serializar();
+                    UDrive.libre[0]=true;
+                    UDrive.disponible[Generar.l1]=true;
+                    Viajes.b1=true;
+                    Generar.a=-1;
+                    Viajes.po1=830;
                 }else{
-                    Viajes.po1=(int)(Viajes.po1+distancia);
+                    Viajes.po1=(int)(Viajes.po1+Viajes.trozo1);
                     Viajes.rec1=+1;
                     Viajes.disto1+=1;
                     Viajes.gas1=Viajes.gas1-viaje.a;
                     Viajes.gast1+=Viajes.a;
                     
                 }
-                if(Viajes.gas1<=0){
+                if(Viajes.gas1<=0 && Viajes.gas1!=-1){
                         pausar();
                         this.viaje.btn13.setVisible(true);
+                        Viajes.reca1=true;
+
                     }
                 Viajes.LabelImagen1.setLocation((int) Viajes.po1, this.viaje.LabelImagen1.getY());
                 Viajes.lbl16.setLocation((int) Viajes.po1, this.viaje.lbl16.getY());

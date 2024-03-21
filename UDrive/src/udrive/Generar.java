@@ -13,7 +13,9 @@ public class Generar extends javax.swing.JFrame {
     /**
      * Creates new form Generar
      */
-    public static int l1,l2,l3;
+    public static int l1=-1;
+    public static int l2=-1;
+    public static int l3=-1;
     public static int a=-1;
     public static int b=-1;
     public static int c=-1;
@@ -197,7 +199,6 @@ public class Generar extends javax.swing.JFrame {
         if (UDrive.libre[0]) {//Aquí solo ando colocando los datos seleccionados en su respectiva ruta
             l1=jComboBox1.getSelectedIndex();
             UDrive.libre[0] = false;
-
             String destino = (String) jComboBox3.getSelectedItem();
             Viajes.D1 = destino;
             String inicio = (String) jComboBox2.getSelectedItem();
@@ -213,6 +214,10 @@ public class Generar extends javax.swing.JFrame {
             a=l1;
             UDrive.disponible[l1] = false;
             Viajes.b1=false;
+            Viajes.disto1=0;
+            Viajes.rec1=0;
+            Viajes.gast1=0;
+            Viajes.trozo1=710/Viajes.d1;
         } else if (UDrive.libre[1]) {
             l2=jComboBox1.getSelectedIndex();
             UDrive.libre[1] = false;
@@ -232,6 +237,10 @@ public class Generar extends javax.swing.JFrame {
             UDrive.disponible[l2] = false;
             b=l2;
             Viajes.b2=false;
+            Viajes.disto2=0;
+            Viajes.rec2=0;
+            Viajes.gast2=0;
+            Viajes.trozo2=710/Viajes.d2;
         } else {
             l3=jComboBox1.getSelectedIndex();
             UDrive.libre[2] = false;
@@ -250,6 +259,11 @@ public class Generar extends javax.swing.JFrame {
             UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
             c=l3;
             Viajes.b3=false;
+            Viajes.disto3=0;
+            Viajes.rec3=0;
+            Viajes.gast3=0;
+            Viajes.trozo3=710/Viajes.d3;
+
         }
         JOptionPane.showMessageDialog(null, "Viaje generado exitosamente", "Viaje generado", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();

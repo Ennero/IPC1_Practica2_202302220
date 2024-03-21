@@ -9,7 +9,6 @@ import java.io.Serializable;
 public class Linea implements Serializable {
 
     private String fechaf, fechai, distancia, vehiculo, gasolina;
-    public static int ID = 100;
 
     public Linea(String fechaf, String fechai, String distancia, String vehiculo, String gasolina) {
         this.fechaf = fechaf;

@@ -10,10 +10,8 @@ import javax.swing.JLabel;
 public class Ruta1 extends Thread{
     Viajes viaje;
     private boolean b1=true;
-    private double distancia;
     public Ruta1(Viajes viaje) {
         this.viaje = viaje;
-        distancia=((Viajes.po1-120)/(Viajes.d1-Viajes.rec1));
     }
     @Override
     public void run(){
@@ -23,17 +21,20 @@ public class Ruta1 extends Thread{
                 if(Viajes.po1<=120){
                     pausar();
                     Viajes.disto1=Viajes.d1;
+                    Viajes.br1=true;
                     Viajes.btn12.setEnabled(true);
+                    
                 }else{
-                    Viajes.po1=(int)(Viajes.po1-distancia);
+                    Viajes.po1=(int)(Viajes.po1-Viajes.trozo1);
                     Viajes.rec1+=1;
                     Viajes.disto1+=1;
                     Viajes.gas1=Viajes.gas1-viaje.a;
                     Viajes.gast1+=Viajes.a;
                 }
-                if(Viajes.gas1<=0){
+                if(Viajes.gas1<=0 && Viajes.gas1!=-1){
                         pausar();
                         this.viaje.btn13.setVisible(true);
+                        Viajes.reca1=true;
                     }
                 Viajes.LabelImagen1.setLocation((int) Viajes.po1, this.viaje.LabelImagen1.getY());
                 Viajes.lbl16.setLocation((int) Viajes.po1, this.viaje.lbl16.getY());

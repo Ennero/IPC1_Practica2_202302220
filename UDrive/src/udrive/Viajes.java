@@ -20,18 +20,23 @@ public class Viajes extends JFrame implements ActionListener {
     public static JLabel lbl11, lbl12, lbl13, lbl14, lbl15, lbl16, lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl31, lbl32, lbl33, lbl34, lbl35, lbl36,
             LabelImagen1, LabelImagen2, LabelImagen3;
     public static String D1, D2, D3, I1, I2, I3, ti1, ti2, ti3, tf1, tf2, tf3;
-    public static double d1, d2, d3, r1, r2, r3, g1, g2, g3, a, b, c, rec1, rec2, rec3, disto1, disto2, disto3, gas1, gas2, gas3, gast1, gast2, gast3;
+    public static double d1, d2, d3, r1, r2, r3, g1, g2, g3, a, b, c, rec1, rec2, rec3, disto1, disto2, disto3,
+            gast1, gast2, gast3,trozo1,trozo2,trozo3;
+    public static double gas1=-1;
+    public static double gas2=-1;
+    public static double gas3=-1;
     public static int po1 = 830;
     public static int po2 = 830;
     public static int po3 = 830;
-    public static JButton btn01, btn02, btn03, btn11, btn12, btn13, btn21, btn22, btn23, btn31, btn32, btn33;
-    public static boolean v1, v2, v3;
+    public static JButton btn01, btn02, btn03, btn11, btn12, btn13, btn21, btn22, btn23, btn31, btn32, btn33,guardar,cargar;
+    public static boolean v1, v2, v3,br1,br2,br3,reca1,reca2,reca3;
     public static boolean b1 = true;
     public static boolean b2 = true;
     public static boolean b3 = true;
 
     public Viajes() throws HeadlessException {
         //Aquí solo inicializo los distintos labels para no tener problemas
+        
 
         //coloco los dos botones de arriba
         btn01 = new JButton("Cerrar");
@@ -43,11 +48,25 @@ public class Viajes extends JFrame implements ActionListener {
         btn02.setBounds(110, 5, 100, 30);
         btn02.addActionListener(this);
         this.add(btn02);
+        
+        guardar= new JButton("Guardar");
+        guardar.setBounds(215,5,100,30);
+        guardar.addActionListener(this);
+        this.add(guardar);
+        
+        cargar=new JButton("Cargar");
+        cargar.setBounds(320,5,100,30);
+        cargar.addActionListener(this);
+        this.add(cargar);
 
         btn03 = new JButton("Iniciar Todos");
         btn03.setBounds(920, 5, 160, 30);
         btn03.addActionListener(this);
         this.add(btn03);
+        btn03.setEnabled(false);//Me quedé viendo lo del boton todos que no se activa
+        if (!UDrive.libre[0] && !UDrive.libre[1] && !UDrive.libre[2]) {
+            btn03.setEnabled(true);
+        }
 
         //Hago que los botones no estén disponibles a nada más empezar
         //**************************************************************************************************************************************
@@ -105,35 +124,34 @@ public class Viajes extends JFrame implements ActionListener {
         btn12 = new JButton("Regresar");
         btn12.setBounds(5, 140, 90, 30);
         btn12.addActionListener(this);
-        if (v1) {
-            btn12.setEnabled(false);
+        btn12.setEnabled(false);
+        if (br1) {
+            btn12.setEnabled(true);
         }
         btn12.setForeground(Color.blue);
-        btn12.setEnabled(false);
         this.add(btn12);
 
         btn22 = new JButton("Regresar");
         btn22.setBounds(5, 305, 90, 30);
         btn22.addActionListener(this);
-        if (v2) {
-            btn22.setEnabled(false);
+        btn22.setEnabled(false);
+        if (br2) {
+            btn22.setEnabled(true);
         }
         btn22.setForeground(Color.blue);
-        btn22.setEnabled(false);
         this.add(btn22);
 
         btn32 = new JButton("Regresar");
         btn32.setBounds(5, 470, 90, 30);
         btn32.addActionListener(this);
-        if (v3) {
-            btn32.setEnabled(false);
+        btn32.setEnabled(false);
+        if (br3) {
+            btn32.setEnabled(true);
         }
         btn32.setForeground(Color.blue);
-        btn32.setEnabled(false);
         this.add(btn32);
         //Aquí termino la cosa de los botones
 //***********************************************************************************************************************************************
-
         int y = 0;//Esto es para posicionar todo donde quiero que esté
         //********************************************************************************************************************************************************
         //Generación de las posiciones de los viajes
@@ -167,7 +185,7 @@ public class Viajes extends JFrame implements ActionListener {
                     lbl14.setFont(new Font("Arial", Font.BOLD, 20));
                     this.add(lbl14);
 
-                    lbl15 = new JLabel("Recorrido: ");
+                    lbl15 = new JLabel("Recorrido: "+ disto1);
                     lbl15.setBounds(po1, 70 + 165 * y, 150, 30);
                     this.add(lbl15);
 
@@ -180,6 +198,10 @@ public class Viajes extends JFrame implements ActionListener {
                     btn13.setForeground(Color.red);
                     btn13.addActionListener(this);
                     btn13.setVisible(false);
+                    if(reca1){
+                        btn13.setVisible((true));
+                    }
+
                     this.add(btn13);
 
                 } else {
@@ -211,7 +233,7 @@ public class Viajes extends JFrame implements ActionListener {
                         lbl14.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl14);
 
-                        lbl15 = new JLabel("Recorrido: " + r1 + "km");
+                        lbl15 = new JLabel("Recorrido: " + disto1 + "km");
                         lbl15.setBounds(po1, 80 + 165 * y, 150, 30);
                         this.add(lbl15);
 
@@ -224,6 +246,9 @@ public class Viajes extends JFrame implements ActionListener {
                         btn13.setForeground(Color.red);
                         btn13.addActionListener(this);
                         btn13.setVisible(false);
+                        if(reca1){
+                        btn13.setVisible((true));
+                    }
                         this.add(btn13);
 
                     } else {
@@ -254,7 +279,7 @@ public class Viajes extends JFrame implements ActionListener {
                         lbl14.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl14);
 
-                        lbl15 = new JLabel("Recorrido: " + r1 + "km");
+                        lbl15 = new JLabel("Recorrido: " + disto1 + "km");
                         lbl15.setBounds(po1, 95 + 165 * y, 150, 30);
                         this.add(lbl15);
 
@@ -267,6 +292,9 @@ public class Viajes extends JFrame implements ActionListener {
                         btn13.setForeground(Color.red);
                         btn13.addActionListener(this);
                         btn13.setVisible(false);
+                        if(reca1){
+                        btn13.setVisible((true));
+                    }
                         this.add(btn13);
 
                     }
@@ -302,7 +330,7 @@ public class Viajes extends JFrame implements ActionListener {
                         lbl24.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl24);
 
-                        lbl25 = new JLabel("Recorrido: " + r2 + "km");
+                        lbl25 = new JLabel("Recorrido: " + disto2 + "km");
                         lbl25.setBounds(po2, 70 + 165 * y, 150, 30);
                         this.add(lbl25);
 
@@ -315,6 +343,9 @@ public class Viajes extends JFrame implements ActionListener {
                         btn23.setForeground(Color.red);
                         btn23.addActionListener(this);
                         btn23.setVisible(false);
+                        if(reca2){
+                        btn23.setVisible((true));
+                    }
                         this.add(btn23);
 
                     } else {
@@ -346,7 +377,7 @@ public class Viajes extends JFrame implements ActionListener {
                             lbl24.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl24);
 
-                            lbl25 = new JLabel("Recorrido: " + r2 + "km");
+                            lbl25 = new JLabel("Recorrido: " + disto2 + "km");
                             lbl25.setBounds(po2, 80 + 165 * y, 150, 30);
                             this.add(lbl25);
 
@@ -359,6 +390,9 @@ public class Viajes extends JFrame implements ActionListener {
                             btn23.setForeground(Color.red);
                             btn23.addActionListener(this);
                             btn23.setVisible(false);
+                            if(reca2){
+                        btn23.setVisible((true));
+                    }
                             this.add(btn23);
 
                         } else {
@@ -389,7 +423,7 @@ public class Viajes extends JFrame implements ActionListener {
                             lbl24.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl24);
 
-                            lbl25 = new JLabel("Recorrido: " + r2 + "km");
+                            lbl25 = new JLabel("Recorrido: " + disto2 + "km");
                             lbl25.setBounds(po2, 95 + 165 * y, 150, 30);
                             this.add(lbl25);
 
@@ -402,6 +436,9 @@ public class Viajes extends JFrame implements ActionListener {
                             btn23.setForeground(Color.red);
                             btn23.addActionListener(this);
                             btn23.setVisible(false);
+                            if(reca2){
+                        btn23.setVisible((true));
+                    }
                             this.add(btn23);
 
                         }
@@ -436,7 +473,7 @@ public class Viajes extends JFrame implements ActionListener {
                         lbl34.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl34);
 
-                        lbl35 = new JLabel("Recorrido: " + r3 + "km");
+                        lbl35 = new JLabel("Recorrido: " + disto3 + "km");
                         lbl35.setBounds(po3, 70 + 165 * y, 150, 30);
                         this.add(lbl35);
 
@@ -449,6 +486,9 @@ public class Viajes extends JFrame implements ActionListener {
                         btn33.setForeground(Color.red);
                         btn33.addActionListener(this);
                         btn33.setVisible(false);
+                        if(reca3){
+                        btn33.setVisible((true));
+                    }
                         this.add(btn33);
 
                     } else {
@@ -480,7 +520,7 @@ public class Viajes extends JFrame implements ActionListener {
                             lbl34.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl34);
 
-                            lbl35 = new JLabel("Recorrido: " + r3 + "km");
+                            lbl35 = new JLabel("Recorrido: " + disto3 + "km");
                             lbl35.setBounds(po3, 80 + 165 * y, 150, 30);
                             this.add(lbl35);
 
@@ -493,6 +533,9 @@ public class Viajes extends JFrame implements ActionListener {
                             btn33.setForeground(Color.red);
                             btn33.addActionListener(this);
                             btn33.setVisible(false);
+                            if(reca3){
+                        btn33.setVisible((true));
+                    }
                             this.add(btn33);
 
                         } else {
@@ -523,7 +566,7 @@ public class Viajes extends JFrame implements ActionListener {
                             lbl34.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl34);
 
-                            lbl35 = new JLabel("Recorrido: " + r3 + "km");
+                            lbl35 = new JLabel("Recorrido: " + disto3 + "km");
                             lbl35.setBounds(po3, 95 + 165 * y, 150, 30);
                             this.add(lbl35);
 
@@ -536,6 +579,9 @@ public class Viajes extends JFrame implements ActionListener {
                             btn33.setForeground(Color.red);
                             btn33.addActionListener(this);
                             btn33.setVisible(false);
+                            if(reca3){
+                        btn33.setVisible((true));
+                    }
                             this.add(btn33);
                         }
                     }
@@ -563,11 +609,8 @@ public class Viajes extends JFrame implements ActionListener {
         if (e.getSource() == btn01) {
             this.dispose();
         }
-        if (e.getSource() == btn02) {
-
-        }
         if (e.getSource() == btn03) {
-            if (!UDrive.disponible[0] && !UDrive.disponible[1] && !UDrive.disponible[2]) {
+            
                 gas1 = g1;
                 gas2 = g2;
                 gas3 = g3;
@@ -589,7 +632,7 @@ public class Viajes extends JFrame implements ActionListener {
                 ti2 = now2.format(formato);
                 LocalDateTime now3 = LocalDateTime.now();
                 ti3 = now3.format(formato);
-            }
+            
 
         }
         if (e.getSource() == btn11) {//Botón de inicio
@@ -608,8 +651,10 @@ public class Viajes extends JFrame implements ActionListener {
             ru.start();
             btn12.setEnabled(false);
             v1 = true;
+            br1=false;
         }
         if (e.getSource() == btn13) {//Este es el botón de recarga
+            reca1=false;
             if (v1) {
                 gas1 = g1;
                 Ruta11 ru = new Ruta11(this);
@@ -639,8 +684,10 @@ public class Viajes extends JFrame implements ActionListener {
             ru.start();
             btn22.setEnabled(false);
             v2 = true;
+            br2=false;
         }
         if (e.getSource() == btn23) {//Este es el botón de recarga
+            reca2=false;
             if (v2) {
                 gas2 = g2;
                 Ruta22 ru = new Ruta22(this);
@@ -669,8 +716,10 @@ public class Viajes extends JFrame implements ActionListener {
             ru.start();
             btn32.setEnabled(false);
             v3 = true;
+            br3=false;
         }
         if (e.getSource() == btn33) {//Este es el botón de recarga
+            reca3=false;
             if (v3) {
                 gas3 = g3;
                 Ruta33 ru = new Ruta33(this);
@@ -682,6 +731,51 @@ public class Viajes extends JFrame implements ActionListener {
                 ru.start();
                 btn33.setVisible(false);
             }
+        }
+        if(e.getSource()==guardar){//Este serializa la información actual
+            UDrive.guardado[0]=new Vehiculo(gas1,d1,disto1,D1,I1,UDrive.ruta[0],po1,true,br1,ti1,UDrive.libre[0],Generar.l1,trozo1);
+            UDrive.guardado[1]=new Vehiculo(gas2,d2,disto2,D2,I2,UDrive.ruta[1],po2,true,br2,ti2,UDrive.libre[1],Generar.l2,trozo2);
+            UDrive.guardado[2]=new Vehiculo(gas3,d3,disto3,D3,I3,UDrive.ruta[2],po3,true,br3,ti3,UDrive.libre[2],Generar.l3,trozo3);
+            UDrive.guardo();
+            
+        }
+        
+        if (e.getSource() == btn02) {//Aquí lo haga para reanudar
+            if(UDrive.guardado[0].isSi()){
+                if(UDrive.guardado[0].isBr()){
+                    Ruta11 sd= new Ruta11(this);
+                    sd.start();
+                }else{
+                    Ruta1 sd= new Ruta1(this);
+                    sd.start();
+                    btn11.setEnabled(false);
+                    b1 = true;
+                }
+            }
+            if(UDrive.guardado[1].isSi()){
+                if(UDrive.guardado[1].isBr()){
+                    Ruta22 sd= new Ruta22(this);
+                    sd.start();
+                }else{
+                    Ruta2 sd= new Ruta2(this);
+                    sd.start();
+                }
+            }
+            if(UDrive.guardado[2].isSi()){
+                if(UDrive.guardado[2].isBr()){
+                    Ruta33 sd= new Ruta33(this);
+                    sd.start();
+                }else{
+                    Ruta3 sd= new Ruta3(this);
+                    sd.start();
+                }
+            }
+        }
+        if(e.getSource()==cargar){
+            UDrive.recargar();
+            this.dispose();
+            Viajes vj=new Viajes();
+            
         }
 
     }
