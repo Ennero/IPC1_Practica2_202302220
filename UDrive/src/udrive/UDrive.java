@@ -16,7 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Enner
  */
-public class UDrive {
+public class UDrive {       
 
     public static int ruta[] = new int[3];//aquí guardar las posiciones de los vehículos
     public static boolean libre[] = {true, true, true};
