@@ -32,7 +32,6 @@ public class UDrive {
         inicio.setLocationRelativeTo(null);
         inicio.setResizable(false);
         inicio.setVisible(true);
-        //Viajes viaje=new Viajes();
         tablear();
     }
 
@@ -165,19 +164,21 @@ public class UDrive {
             libre[2]=guardado[2].isIni();
             
             if(guardado[0].getL()>-1){
-                Generar.l1=guardado[0].getL();
-                UDrive.disponible[Generar.l1]=false;
+                UDrive.disponible[guardado[0].getL()] = guardado[0].isAvailable();
             }
+            Generar.l1=guardado[0].getL();
+            
             
             if(guardado[1].getL()>-1){
-                Generar.l2=guardado[1].getL();
-                UDrive.disponible[Generar.l2]=false;
+                UDrive.disponible[guardado[1].getL()] = guardado[1].isAvailable();
             }
-            
+            Generar.l2=guardado[1].getL();
             if(guardado[2].getL()>-1){
-                Generar.l2=guardado[2].getL();
-                UDrive.disponible[Generar.l2]=false;
+
+                UDrive.disponible[guardado[2].getL()] = guardado[2].isAvailable();
             }
+            Generar.l3=guardado[2].getL();
+            
             Viajes.trozo1=guardado[0].getTrozo();
             Viajes.trozo2=guardado[1].getTrozo();
             Viajes.trozo3=guardado[2].getTrozo();

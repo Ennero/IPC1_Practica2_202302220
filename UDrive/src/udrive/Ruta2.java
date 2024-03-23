@@ -15,6 +15,7 @@ public class Ruta2 extends Thread{
     @Override
     public void run(){
         Generar.ll2=Generar.l2;
+        Viajes.va2=false;
         try{
             while(b1){
                 sleep(1000);

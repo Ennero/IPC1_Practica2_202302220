@@ -17,6 +17,7 @@ public class Ruta1 extends Thread{
     public void run(){
         try{
             Generar.ll1=Generar.l1;
+            Viajes.va1=false;
             while(b1){
                 sleep(1000);
                 if(Viajes.po1<=120){
@@ -47,6 +48,7 @@ public class Ruta1 extends Thread{
             System.out.println(e);
         }
     }
+    
         public void pausar(){
         b1=false;
     }

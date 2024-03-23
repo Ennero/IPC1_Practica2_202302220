@@ -29,7 +29,7 @@ public class Viajes extends JFrame implements ActionListener {
     public static int po2 = 830;
     public static int po3 = 830;
     public static JButton btn01, btn02, btn03, btn11, btn12, btn13, btn21, btn22, btn23, btn31, btn32, btn33,guardar,cargar;
-    public static boolean v1, v2, v3,br1,br2,br3,reca1,reca2,reca3;
+    public static boolean v1, v2, v3,br1,br2,br3,reca1,reca2,reca3,va1,va2,va3;
     public static boolean b1 = true;
     public static boolean b2 = true;
     public static boolean b3 = true;
@@ -656,7 +656,7 @@ public class Viajes extends JFrame implements ActionListener {
         }
         if (e.getSource() == btn13) {//Este es el botón de recarga
             reca1=false;
-            if (v1) {
+            if (va1) {
                 gas1 = g1;
                 Ruta11 ru = new Ruta11(this);
                 ru.start();
@@ -689,7 +689,7 @@ public class Viajes extends JFrame implements ActionListener {
         }
         if (e.getSource() == btn23) {//Este es el botón de recarga
             reca2=false;
-            if (v2) {
+            if (va2) {
                 gas2 = g2;
                 Ruta22 ru = new Ruta22(this);
                 ru.start();
@@ -721,7 +721,7 @@ public class Viajes extends JFrame implements ActionListener {
         }
         if (e.getSource() == btn33) {//Este es el botón de recarga
             reca3=false;
-            if (v3) {
+            if (va3) {
                 gas3 = g3;
                 Ruta33 ru = new Ruta33(this);
                 ru.start();
@@ -734,9 +734,9 @@ public class Viajes extends JFrame implements ActionListener {
             }
         }
         if(e.getSource()==guardar){//Este serializa la información actual
-            UDrive.guardado[0]=new Vehiculo(gas1,d1,disto1,D1,I1,UDrive.ruta[0],po1,true,br1,ti1,UDrive.libre[0],Generar.l1,trozo1);
-            UDrive.guardado[1]=new Vehiculo(gas2,d2,disto2,D2,I2,UDrive.ruta[1],po2,true,br2,ti2,UDrive.libre[1],Generar.l2,trozo2);
-            UDrive.guardado[2]=new Vehiculo(gas3,d3,disto3,D3,I3,UDrive.ruta[2],po3,true,br3,ti3,UDrive.libre[2],Generar.l3,trozo3);
+            UDrive.guardado[0]=new Vehiculo(gas1,d1,disto1,D1,I1,UDrive.ruta[0],po1,true,va1,ti1,UDrive.libre[0],Generar.l1,trozo1,UDrive.disponible[Generar.l1]);
+            UDrive.guardado[1]=new Vehiculo(gas2,d2,disto2,D2,I2,UDrive.ruta[1],po2,true,va2,ti2,UDrive.libre[1],Generar.l2,trozo2,UDrive.disponible[Generar.l2]);
+            UDrive.guardado[2]=new Vehiculo(gas3,d3,disto3,D3,I3,UDrive.ruta[2],po3,true,va3,ti3,UDrive.libre[2],Generar.l3,trozo3,UDrive.disponible[Generar.l3]);
             UDrive.guardo();
             
         }

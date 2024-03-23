@@ -6,7 +6,6 @@ package udrive;
  * @author Enner
  */
 public class Ruta3 extends Thread{
-    
     Viajes viaje;
     private boolean b1=true;
     public Ruta3(Viajes viaje) {
@@ -15,6 +14,7 @@ public class Ruta3 extends Thread{
     @Override
     public void run(){
         Generar.ll3=Generar.l3;
+        Viajes.va3=false;
         try{
             while(b1){
                 sleep(1000);

@@ -12,9 +12,9 @@ public class Vehiculo implements Serializable{
     private double gasolina,distancia,distanciado,trozo;
     private String  destino, inicio,T1;
     private int i, pos,l;
-    private boolean br,si,ini;
+    private boolean br,si,ini,available;
 
-    public Vehiculo(double gasolina, double distancia, double distanciado, String destino, String inicio, int i, int pos, boolean si, boolean br,String T1,boolean ini,int l,double trozo) {
+    public Vehiculo(double gasolina, double distancia, double distanciado, String destino, String inicio, int i, int pos, boolean si, boolean br,String T1,boolean ini,int l,double trozo,boolean available) {
         this.gasolina = gasolina;
         this.distancia = distancia;
         this.distanciado = distanciado;
@@ -28,6 +28,7 @@ public class Vehiculo implements Serializable{
         this.ini=ini;
         this.l=l;
         this.trozo=trozo;
+        this.available=available;
     }
 
 
@@ -182,6 +183,20 @@ public class Vehiculo implements Serializable{
      */
     public void setTrozo(double trozo) {
         this.trozo = trozo;
+    }
+
+    /**
+     * @return the available
+     */
+    public boolean isAvailable() {
+        return available;
+    }
+
+    /**
+     * @param available the available to set
+     */
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     /**

@@ -20,6 +20,8 @@ public class Generar extends javax.swing.JFrame {
     public static int a=-1;
     public static int b=-1;
     public static int c=-1;
+    
+    
     public Generar() {
 
         initComponents();
@@ -254,6 +256,9 @@ public class Generar extends javax.swing.JFrame {
                 l3++;
             }
             if(l3>=a && a!=-1){
+                l3++;
+            }
+            if(a==b+1 || b==a+1){
                 l3++;
             }
             UDrive.ruta[2] = l3;
