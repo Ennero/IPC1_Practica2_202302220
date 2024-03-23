@@ -16,6 +16,7 @@ public class Ruta1 extends Thread{
     @Override
     public void run(){
         try{
+            Generar.ll1=Generar.l1;
             while(b1){
                 sleep(1000);
                 if(Viajes.po1<=120){
@@ -23,7 +24,6 @@ public class Ruta1 extends Thread{
                     Viajes.disto1=Viajes.d1;
                     Viajes.br1=true;
                     Viajes.btn12.setEnabled(true);
-                    
                 }else{
                     Viajes.po1=(int)(Viajes.po1-Viajes.trozo1);
                     Viajes.rec1+=1;

@@ -17,6 +17,8 @@ public class Menu extends javax.swing.JFrame {
         jButton3.setEnabled(false);
         String[] titulos=new String []{"Id:","Inicio","Fin","Distancia (km)"};
         d.setColumnIdentifiers(titulos);
+        
+
         jTable1.setModel(d);
     }
 
@@ -128,20 +130,38 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         UDrive.leerCSV(this);
-        jButton3.setEnabled(true);
+        if(UDrive.ID>=100){
+            jButton3.setEnabled(true);
+        }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Generar generar=new Generar();
+        
+        try{
+            Generar generar=new Generar();
         generar.setLocationRelativeTo(null);
         generar.setResizable(false);
         generar.setVisible(true);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Viajes viajes=new Viajes();
+        
+        try{
+            Viajes viajes=new Viajes();
+            viajes.setVisible(true);
+            viajes.setResizable(false);
+            viajes.setLocationRelativeTo(null);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

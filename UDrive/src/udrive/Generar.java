@@ -16,6 +16,7 @@ public class Generar extends javax.swing.JFrame {
     public static int l1=-1;
     public static int l2=-1;
     public static int l3=-1;
+    public static int ll1, ll2, ll3;
     public static int a=-1;
     public static int b=-1;
     public static int c=-1;
@@ -204,10 +205,10 @@ public class Generar extends javax.swing.JFrame {
             String inicio = (String) jComboBox2.getSelectedItem();
             Viajes.I1 = inicio;
             Viajes.d1 = Double.parseDouble((String) Menu.d.getValueAt(jComboBox2.getSelectedIndex() / 2, 3));
-            if(jComboBox1.getSelectedIndex()>=b && b!=-1){
+            if(l1>=b && b!=-1){
                 l1++;
             }
-            if(jComboBox1.getSelectedIndex()>=c && c!=-1){
+            if(l1>=c && c!=-1){
                 l1++;
             }
             UDrive.ruta[0] = l1;
@@ -227,10 +228,10 @@ public class Generar extends javax.swing.JFrame {
             String inicio = (String) jComboBox2.getSelectedItem();
             Viajes.I2 = inicio;
             Viajes.d2 = Double.parseDouble((String) Menu.d.getValueAt(jComboBox2.getSelectedIndex() / 2, 3));
-            if(jComboBox1.getSelectedIndex()>=a && a!=-1){
+            if(l2>=a && a!=-1){
                 l2++;
             }
-            if(jComboBox1.getSelectedIndex()>=c && c!=-1){
+            if(l2>=c && c!=-1){
                 l2++;
             }
             UDrive.ruta[1] = l2;
@@ -249,14 +250,14 @@ public class Generar extends javax.swing.JFrame {
             String inicio = (String) jComboBox2.getSelectedItem();
             Viajes.I3 = inicio;
             Viajes.d3 = Double.parseDouble((String) Menu.d.getValueAt(jComboBox2.getSelectedIndex() / 2, 3));
-            if(jComboBox1.getSelectedIndex()>=b && b!=-1){
+            if(l3>=b && b!=-1){
                 l3++;
             }
-            if(jComboBox1.getSelectedIndex()>=a && a!=-1){
+            if(l3>=a && a!=-1){
                 l3++;
             }
             UDrive.ruta[2] = l3;
-            UDrive.disponible[jComboBox1.getSelectedIndex()] = false;
+            UDrive.disponible[l3] = false;
             c=l3;
             Viajes.b3=false;
             Viajes.disto3=0;

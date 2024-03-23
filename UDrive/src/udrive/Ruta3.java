@@ -14,6 +14,7 @@ public class Ruta3 extends Thread{
     }
     @Override
     public void run(){
+        Generar.ll3=Generar.l3;
         try{
             while(b1){
                 sleep(1000);

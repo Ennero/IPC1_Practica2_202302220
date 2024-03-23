@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -22,7 +23,7 @@ public class UDrive {
     public static boolean libre[] = {true, true, true};
     public static ArrayList<Linea> historial = new ArrayList<>();
     public static Vehiculo[] guardado = new Vehiculo[3];
-    public static int ID = 0;
+    public static int ID = 99;
 
     //public Object[][] tableo(){
     //}
@@ -50,29 +51,33 @@ public class UDrive {
 
         int resultado = escojo.showOpenDialog(frame);
 
-        if (resultado == JFileChooser.APPROVE_OPTION) {
+        if (resultado == JFileChooser.APPROVE_OPTION) {//En dado caso haya sido aceptado el archivo
+                    
 
             File escojido = escojo.getSelectedFile();
             try {
-                Scanner scan = new Scanner(escojido);
+                Scanner scan = new Scanner(escojido,"UTF-8");//Leo lo que tiene el archivo con UTF-8 para que pueda tener tildes
                 while (scan.hasNextLine()) {
                     String linea = scan.nextLine();
                     String[] partes = linea.split(",");
 
-                    for (int i = 0; i < partes.length; i = i + 3) {//Solo lo coloco todo dentro de la tabla
-                        String[] vector = new String[4];
-                        ID=ID+1;
-                        vector[0] = String.valueOf(ID);
-                        vector[1] = partes[i];
-                        vector[2] = partes[i + 1];
-                        vector[3] = partes[i + 2];
-                        Menu.d.addRow(vector);
+                    for (int i = 0; i < partes.length; i=i+3) {//Solo lo coloco todo dentro de la tabla
+                        
+                            String[] vector = new String[4];
+
+                            vector[0] = String.valueOf(ID);
+                            vector[1] = partes[i];
+                            vector[2] = partes[i + 1];
+                            vector[3] = partes[i + 2];
+                            Menu.d.addRow(vector);
+                            ID=ID+1;
                     }
+                    
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
+            Menu.d.removeRow(0);//esto solo espara quitar la primera fila que es la de los encabezados
         }
     }
 
@@ -204,10 +209,13 @@ public class UDrive {
             Viajes.ti1= guardado[0].getT1();
             Viajes.ti2= guardado[1].getT1();
             Viajes.ti3=guardado[2].getT1();
+
             
-            
-            
+        }else{
+            JOptionPane.showMessageDialog(null, "Primero debe haber guardado algo", "Error al cargar", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("Nel, no hay nada ");
         }
+        
     }
 
 }

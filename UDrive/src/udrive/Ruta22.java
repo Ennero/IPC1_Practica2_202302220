@@ -16,6 +16,7 @@ public class Ruta22 extends Thread{
     }
     @Override
     public void run(){
+        Generar.ll2=Generar.l2;
         try{
             while(b1){
                 sleep(1000);
@@ -30,7 +31,7 @@ public class Ruta22 extends Thread{
                     UDrive.historial.add(new Linea(tf2,Viajes.ti2,String.valueOf(Viajes.disto2),nombre,String.valueOf((Viajes.gast2))));
                     UDrive.serializar();
                     UDrive.libre[1]=true;
-                    UDrive.disponible[Generar.l2]=true;
+                    UDrive.disponible[Generar.ll2]=true;
                     Viajes.b2=true;
                     Generar.b=-1;
                     Viajes.po2=830;

@@ -34,7 +34,7 @@ public class Viajes extends JFrame implements ActionListener {
     public static boolean b2 = true;
     public static boolean b3 = true;
 
-    public Viajes() throws HeadlessException {
+    public Viajes() {
         //Aquí solo inicializo los distintos labels para no tener problemas
         
 
@@ -47,6 +47,7 @@ public class Viajes extends JFrame implements ActionListener {
         btn02 = new JButton("Reanudar");
         btn02.setBounds(110, 5, 100, 30);
         btn02.addActionListener(this);
+        btn02.setEnabled(false);
         this.add(btn02);
         
         guardar= new JButton("Guardar");
@@ -71,21 +72,21 @@ public class Viajes extends JFrame implements ActionListener {
         //Hago que los botones no estén disponibles a nada más empezar
         //**************************************************************************************************************************************
         //generación de las rutas (las lineas)
-        ImageIcon imagenIcono01 = new ImageIcon(getClass().getResource("./v/linea.png"));
+        ImageIcon imagenIcono01 = new ImageIcon(getClass().getResource("v/linea.png"));
         Image imageDimension01 = imagenIcono01.getImage().getScaledInstance(860, 95, Image.SCALE_SMOOTH);
         ImageIcon imagenadjustada01 = new ImageIcon(imageDimension01);
         JLabel LabelImagen01 = new JLabel(imagenadjustada01); //Label de la iamgen
         LabelImagen01.setBounds(95, 110, 860, 160);
         this.add(LabelImagen01);
 
-        ImageIcon imagenIcono02 = new ImageIcon(getClass().getResource("./v/linea.png"));
+        ImageIcon imagenIcono02 = new ImageIcon(getClass().getResource("v/linea.png"));
         Image imageDimension02 = imagenIcono02.getImage().getScaledInstance(860, 95, Image.SCALE_SMOOTH);
         ImageIcon imagenadjustad02 = new ImageIcon(imageDimension02);
         JLabel LabelImagen02 = new JLabel(imagenadjustad02); //Label de la iamgen
         LabelImagen02.setBounds(95, 280, 860, 160);
         this.add(LabelImagen02);
 
-        ImageIcon imagenIcono03 = new ImageIcon(getClass().getResource("./v/linea.png"));
+        ImageIcon imagenIcono03 = new ImageIcon(getClass().getResource("v/linea.png"));
         Image imageDimension03 = imagenIcono03.getImage().getScaledInstance(860, 95, Image.SCALE_SMOOTH);
         ImageIcon imagenadjustada03 = new ImageIcon(imageDimension03);
         JLabel LabelImagen03 = new JLabel(imagenadjustada03); //Label de la iamgen
@@ -160,7 +161,7 @@ public class Viajes extends JFrame implements ActionListener {
                 if (UDrive.ruta[i] < 3) {//La generación de los autos con sus respectivas posiciones
                     g1 = 6;
                     a = 0.1;
-                    ImageIcon imagenIcono1 = new ImageIcon(getClass().getResource("./v/moto.png"));
+                    ImageIcon imagenIcono1 = new ImageIcon(getClass().getResource("v/moto.png"));
                     Image imageDimension1 = imagenIcono1.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                     ImageIcon imagenadjustada1 = new ImageIcon(imageDimension1);
                     LabelImagen1 = new JLabel(imagenadjustada1); //Label de la iamgen
@@ -177,11 +178,11 @@ public class Viajes extends JFrame implements ActionListener {
                     this.add(lbl12);
 
                     lbl13 = new JLabel("Destino: " + D1);
-                    lbl13.setBounds(10, 100 + 165 * y, 150, 30);
+                    lbl13.setBounds(10, 100 + 165 * y, 200, 30);
                     this.add(lbl13);
 
                     lbl14 = new JLabel("Inicio: " + I1);
-                    lbl14.setBounds(850, 40 + 165 * y, 300, 30);
+                    lbl14.setBounds(800, 40 + 165 * y, 300, 30);
                     lbl14.setFont(new Font("Arial", Font.BOLD, 20));
                     this.add(lbl14);
 
@@ -194,7 +195,7 @@ public class Viajes extends JFrame implements ActionListener {
                     this.add(lbl16);
 
                     btn13 = new JButton("Recargar");
-                    btn13.setBounds(965, 150 + 165 * y, 100, 20);
+                    btn13.setBounds(po1+135, 150 + 165 * y, 100, 20);
                     btn13.setForeground(Color.red);
                     btn13.addActionListener(this);
                     btn13.setVisible(false);
@@ -208,7 +209,7 @@ public class Viajes extends JFrame implements ActionListener {
                     if (UDrive.ruta[i] < 6) {
                         g1 = 10;
                         a = 0.3;
-                        ImageIcon imagenIcono1 = new ImageIcon(getClass().getResource("./v/picanto.png"));
+                        ImageIcon imagenIcono1 = new ImageIcon(getClass().getResource("v/picanto.png"));
                         Image imageDimension1 = imagenIcono1.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                         ImageIcon imagenadjustada1 = new ImageIcon(imageDimension1);
                         LabelImagen1 = new JLabel(imagenadjustada1); //Label de la iamgen
@@ -225,11 +226,11 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl12);
 
                         lbl13 = new JLabel("Destino: " + D1);
-                        lbl13.setBounds(10, 100 + 165 * y, 150, 30);
+                        lbl13.setBounds(10, 100 + 165 * y, 200, 30);
                         this.add(lbl13);
 
                         lbl14 = new JLabel("Inicio: " + I1);
-                        lbl14.setBounds(850, 40 + 165 * y, 300, 30);
+                        lbl14.setBounds(800, 40 + 165 * y, 300, 30);
                         lbl14.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl14);
 
@@ -242,7 +243,7 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl16);
 
                         btn13 = new JButton("Recargar");
-                        btn13.setBounds(965, 150 + 165 * y, 100, 20);
+                        btn13.setBounds(po1+135, 150 + 165 * y, 100, 20);
                         btn13.setForeground(Color.red);
                         btn13.addActionListener(this);
                         btn13.setVisible(false);
@@ -254,7 +255,7 @@ public class Viajes extends JFrame implements ActionListener {
                     } else {
                         g1 = 12;
                         a = 0.45;
-                        ImageIcon imagenIcono1 = new ImageIcon(getClass().getResource("./v/tesla.png"));
+                        ImageIcon imagenIcono1 = new ImageIcon(getClass().getResource("v/tesla.png"));
                         Image imageDimension1 = imagenIcono1.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                         ImageIcon imagenadjustada1 = new ImageIcon(imageDimension1);
                         LabelImagen1 = new JLabel(imagenadjustada1); //Label de la iamgen
@@ -271,11 +272,11 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl12);
 
                         lbl13 = new JLabel("Destino: " + D1);
-                        lbl13.setBounds(10, 100 + 165 * y, 150, 30);
+                        lbl13.setBounds(10, 100 + 165 * y, 200, 30);
                         this.add(lbl13);
 
                         lbl14 = new JLabel("Inicio: " + I1);
-                        lbl14.setBounds(850, 40 + 165 * y, 300, 30);
+                        lbl14.setBounds(800, 40 + 165 * y, 300, 30);
                         lbl14.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl14);
 
@@ -288,7 +289,7 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl16);
 
                         btn13 = new JButton("Recargar");
-                        btn13.setBounds(965, 150 + 165 * y, 100, 20);
+                        btn13.setBounds(po1+135, 150 + 165 * y, 100, 20);
                         btn13.setForeground(Color.red);
                         btn13.addActionListener(this);
                         btn13.setVisible(false);
@@ -305,7 +306,7 @@ public class Viajes extends JFrame implements ActionListener {
                         g2 = 6;
                         b = 0.1;
 
-                        ImageIcon imagenIcono2 = new ImageIcon(getClass().getResource("./v/moto.png"));
+                        ImageIcon imagenIcono2 = new ImageIcon(getClass().getResource("v/moto.png"));
                         Image imageDimension2 = imagenIcono2.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                         ImageIcon imagenadjustada2 = new ImageIcon(imageDimension2);
                         LabelImagen2 = new JLabel(imagenadjustada2); //Label de la iamgen
@@ -322,11 +323,11 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl22);
 
                         lbl23 = new JLabel("Destino: " + D2);
-                        lbl23.setBounds(10, 100 + 165 * y, 150, 30);
+                        lbl23.setBounds(10, 100 + 165 * y, 200, 30);
                         this.add(lbl23);
 
                         lbl24 = new JLabel("Inicio: " + I2);
-                        lbl24.setBounds(850, 40 + 165 * y, 300, 30);
+                        lbl24.setBounds(800, 40 + 165 * y, 300, 30);
                         lbl24.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl24);
 
@@ -339,7 +340,7 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl26);
 
                         btn23 = new JButton("Recargar");
-                        btn23.setBounds(965, 150 + 165 * y, 100, 20);
+                        btn23.setBounds(po2+135, 150 + 165 * y, 100, 20);
                         btn23.setForeground(Color.red);
                         btn23.addActionListener(this);
                         btn23.setVisible(false);
@@ -352,7 +353,7 @@ public class Viajes extends JFrame implements ActionListener {
                         if (UDrive.ruta[i] < 6) {
                             g2 = 10;
                             b = 0.3;
-                            ImageIcon imagenIcono2 = new ImageIcon(getClass().getResource("./v/picanto.png"));
+                            ImageIcon imagenIcono2 = new ImageIcon(getClass().getResource("v/picanto.png"));
                             Image imageDimension2 = imagenIcono2.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                             ImageIcon imagenadjustada2 = new ImageIcon(imageDimension2);
                             LabelImagen2 = new JLabel(imagenadjustada2); //Label de la iamgen
@@ -369,11 +370,11 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl22);
 
                             lbl23 = new JLabel("Destino: " + D2);
-                            lbl23.setBounds(10, 100 + 165 * y, 150, 30);
+                            lbl23.setBounds(10, 100 + 165 * y, 200, 30);
                             this.add(lbl23);
 
                             lbl24 = new JLabel("Inicio: " + I2);
-                            lbl24.setBounds(850, 40 + 165 * y, 300, 30);
+                            lbl24.setBounds(800, 40 + 165 * y, 300, 30);
                             lbl24.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl24);
 
@@ -386,7 +387,7 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl26);
 
                             btn23 = new JButton("Recargar");
-                            btn23.setBounds(965, 150 + 165 * y, 100, 20);
+                            btn23.setBounds(po2+135, 150 + 165 * y, 100, 20);
                             btn23.setForeground(Color.red);
                             btn23.addActionListener(this);
                             btn23.setVisible(false);
@@ -398,7 +399,7 @@ public class Viajes extends JFrame implements ActionListener {
                         } else {
                             g2 = 12;
                             b = 0.45;
-                            ImageIcon imagenIcono2 = new ImageIcon(getClass().getResource("./v/tesla.png"));
+                            ImageIcon imagenIcono2 = new ImageIcon(getClass().getResource("v/tesla.png"));
                             Image imageDimension2 = imagenIcono2.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                             ImageIcon imagenadjustada2 = new ImageIcon(imageDimension2);
                             LabelImagen2 = new JLabel(imagenadjustada2); //Label de la iamgen
@@ -415,11 +416,11 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl22);
 
                             lbl23 = new JLabel("Destino: " + D2);
-                            lbl23.setBounds(10, 100 + 165 * y, 150, 30);
+                            lbl23.setBounds(10, 100 + 165 * y, 200, 30);
                             this.add(lbl23);
 
                             lbl24 = new JLabel("Inicio: " + I2);
-                            lbl24.setBounds(850, 40 + 165 * y, 300, 30);
+                            lbl24.setBounds(800, 40 + 165 * y, 300, 30);
                             lbl24.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl24);
 
@@ -432,7 +433,7 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl26);
 
                             btn23 = new JButton("Recargar");
-                            btn23.setBounds(965, 150 + 165 * y, 100, 20);
+                            btn23.setBounds(po2+135, 150 + 165 * y, 100, 20);
                             btn23.setForeground(Color.red);
                             btn23.addActionListener(this);
                             btn23.setVisible(false);
@@ -448,7 +449,7 @@ public class Viajes extends JFrame implements ActionListener {
                     if (UDrive.ruta[i] < 3) {//La generación de los autos con sus respectivas posiciones
                         g3 = 6;
                         c = 0.1;
-                        ImageIcon imagenIcono3 = new ImageIcon(getClass().getResource("./v/moto.png"));
+                        ImageIcon imagenIcono3 = new ImageIcon(getClass().getResource("v/moto.png"));
                         Image imageDimension3 = imagenIcono3.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                         ImageIcon imagenadjustada3 = new ImageIcon(imageDimension3);
                         LabelImagen3 = new JLabel(imagenadjustada3); //Label de la iamgen
@@ -465,11 +466,11 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl32);
 
                         lbl33 = new JLabel("Destino: " + D3);
-                        lbl33.setBounds(10, 100 + 165 * y, 150, 30);
+                        lbl33.setBounds(10, 100 + 165 * y, 200, 30);
                         this.add(lbl33);
 
                         lbl34 = new JLabel("Inicio: " + I3);
-                        lbl34.setBounds(850, 40 + 165 * y, 300, 30);
+                        lbl34.setBounds(800, 40 + 165 * y, 300, 30);
                         lbl34.setFont(new Font("Arial", Font.BOLD, 20));
                         this.add(lbl34);
 
@@ -482,7 +483,7 @@ public class Viajes extends JFrame implements ActionListener {
                         this.add(lbl36);
 
                         btn33 = new JButton("Recargar");
-                        btn33.setBounds(965, 150 + 165 * y, 100, 20);
+                        btn33.setBounds(po3+135, 150 + 165 * y, 100, 20);
                         btn33.setForeground(Color.red);
                         btn33.addActionListener(this);
                         btn33.setVisible(false);
@@ -495,7 +496,7 @@ public class Viajes extends JFrame implements ActionListener {
                         if (UDrive.ruta[i] < 6) {
                             g3 = 10;
                             c = 0.3;
-                            ImageIcon imagenIcono3 = new ImageIcon(getClass().getResource("./v/picanto.png"));
+                            ImageIcon imagenIcono3 = new ImageIcon(getClass().getResource("v/picanto.png"));
                             Image imageDimension3 = imagenIcono3.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                             ImageIcon imagenadjustada3 = new ImageIcon(imageDimension3);
                             LabelImagen3 = new JLabel(imagenadjustada3); //Label de la iamgen
@@ -512,11 +513,11 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl32);
 
                             lbl33 = new JLabel("Destino: " + D3);
-                            lbl33.setBounds(10, 100 + 165 * y, 150, 30);
+                            lbl33.setBounds(10, 100 + 165 * y, 200, 30);
                             this.add(lbl33);
 
                             lbl34 = new JLabel("Inicio: " + I3);
-                            lbl34.setBounds(850, 40 + 165 * y, 300, 30);
+                            lbl34.setBounds(800, 40 + 165 * y, 300, 30);
                             lbl34.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl34);
 
@@ -529,7 +530,7 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl36);
 
                             btn33 = new JButton("Recargar");
-                            btn33.setBounds(965, 150 + 165 * y, 100, 20);
+                            btn33.setBounds(po3+135, 150 + 165 * y, 100, 20);
                             btn33.setForeground(Color.red);
                             btn33.addActionListener(this);
                             btn33.setVisible(false);
@@ -541,7 +542,7 @@ public class Viajes extends JFrame implements ActionListener {
                         } else {
                             g3 = 12;
                             c = 0.45;
-                            ImageIcon imagenIcono3 = new ImageIcon(getClass().getResource("./v/tesla.png"));
+                            ImageIcon imagenIcono3 = new ImageIcon(getClass().getResource("v/tesla.png"));
                             Image imageDimension3 = imagenIcono3.getImage().getScaledInstance(125, 95, Image.SCALE_SMOOTH);
                             ImageIcon imagenadjustada3 = new ImageIcon(imageDimension3);
                             LabelImagen3 = new JLabel(imagenadjustada3); //Label de la iamgen
@@ -558,11 +559,11 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl32);
 
                             lbl33 = new JLabel("Destino: " + D3);
-                            lbl33.setBounds(10, 100 + 165 * y, 150, 30);
+                            lbl33.setBounds(10, 100 + 165 * y, 200, 30);
                             this.add(lbl33);
 
                             lbl34 = new JLabel("Inicio: " + I3);
-                            lbl34.setBounds(850, 40 + 165 * y, 300, 30);
+                            lbl34.setBounds(800, 40 + 165 * y, 300, 30);
                             lbl34.setFont(new Font("Arial", Font.BOLD, 20));
                             this.add(lbl34);
 
@@ -575,7 +576,7 @@ public class Viajes extends JFrame implements ActionListener {
                             this.add(lbl36);
 
                             btn33 = new JButton("Recargar");
-                            btn33.setBounds(965, 150 + 165 * y, 100, 20);
+                            btn33.setBounds(po3+135, 150 + 165 * y, 100, 20);
                             btn33.setForeground(Color.red);
                             btn33.addActionListener(this);
                             btn33.setVisible(false);
@@ -609,8 +610,8 @@ public class Viajes extends JFrame implements ActionListener {
         if (e.getSource() == btn01) {
             this.dispose();
         }
-        if (e.getSource() == btn03) {
-            
+        if (e.getSource() == btn03) {//Este es para inicar todos al mismo tiempo
+                btn03.setEnabled(false);
                 gas1 = g1;
                 gas2 = g2;
                 gas3 = g3;
@@ -741,6 +742,7 @@ public class Viajes extends JFrame implements ActionListener {
         }
         
         if (e.getSource() == btn02) {//Aquí lo haga para reanudar
+            btn02.setEnabled(false);
             if(UDrive.guardado[0].isSi()){
                 if(UDrive.guardado[0].isBr()){
                     Ruta11 sd= new Ruta11(this);
@@ -775,6 +777,7 @@ public class Viajes extends JFrame implements ActionListener {
             UDrive.recargar();
             this.dispose();
             Viajes vj=new Viajes();
+            btn02.setEnabled(true);
             
         }
 
